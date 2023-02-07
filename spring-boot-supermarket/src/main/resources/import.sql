@@ -1,0 +1,2 @@
+INSERT INTO users (username, password) VALUES ('Gonzalo','123');
+INSERT INTO carnes (nombre,peso,precio,tipo,fecha_elaboracion,fecha_vencimiento,animal,categoria) VALUES ('Pechuga King-Chicken',1000,800,'Pechuga de Pollo',NOw(),NOW(), 'Gallina','Economica');

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+	<div class="m-0 row justify-content-center conteiner-fluid">
+		<div class="col-auto">
+			<img class="img img-fluid" alt="" th:src="@{/img//logotipo.jpg}"
+				width="250" height="250">
+		</div>
+	</div>
+
+	<section class="mx-0 row justify-content-center conteiner-fluid">
+		<!-- Pills navs -->
+		<div class="col-4">
+			<!-- Pills navs -->
+			<!-- Pills content -->
+			<div class="tab-content mb-3">
+				<div class="tab-pane fade show active" id="pills-login"
+					role="tabpanel" aria-labelledby="tab-login">
+					<form th:action="@{/login}" method="post">
+						<div class="text-center mb-4">
+							<h3 class="text text-dark">Iniciar Sesion</h3>
+						</div>
+
+						<!-- Email input -->
+						<div class="form-outline mb-4">
+						<label
+								class="form-label text-dark" for="username">Username</label>
+							<input id="username" type="text" name="username"
+								class="form-control" placeholder="Username"
+								autofocus="autofocus"> 
+						</div>
+
+						<!-- Password input -->
+						<div class="form-outline mb-4">
+						<label
+								class="form-label text-dark" for="password">Contraseña</label>
+							<input id="password" type="password" name="password"
+								class="form-control" placeholder="Contraseña"
+								autofocus="autofocus"> 
+						</div>
+
+						<!-- 2 column grid layout -->
+						<div class="row mb-4">
+
+							<div class="col-md-5 d-flex justify-content-center">
+								<!-- Simple link -->
+								<a href="#!">Olvide mi contraseña</a>
+							</div>
+						</div>
+
+						<!-- Submit button -->
+						<button type="submit" class="btn btn-primary btn-block mb-4">Iniciar
+							Session</button>
+
+						<!-- Register buttons -->
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Pills content -->
+	</section>
+</body>
+</html>
