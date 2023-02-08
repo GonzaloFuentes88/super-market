@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+	<nav th:replace="layout/layout::nav"></nav>
+	<section class="mx-0 row justify-content-center conteiner-fluid">
+		<table class="mt-4 table table-sm" th:if="${not carnes.isEmpty()}">
+			<thead>
+				<tr>
+					<th scope="col">Proveedor</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Peso</th>
+					<th scope="col">Pecio</th>
+					<th scope="col">Animal</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">Vencimiento</th>
+					<th scope="col">Elaboracion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="carne:${carnes}">
+					<td th:text="${carne.proveedor}"></td>
+					<td th:text="${carne.nombre}"></td>
+					<td th:text="${carne.peso}"></td>
+					<td th:text="${carne.precio}"></td>
+					<td th:text="${carne.animal}"></td>
+					<td th:text="${carne.categoria}"></td>
+					<td th:text="${carne.fechaVencimiento}"></td>
+					<td th:text="${carne.fechaElaboracion}"></td>
+
+				</tr>
+			</tbody>
+
+		</table>
+
+		<table class="mt-4 table table-sm" th:if="${not verduras.isEmpty()}">
+			<thead>
+				<tr>
+					<th scope="col">Proveedor</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Peso</th>
+					<th scope="col">Pecio</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">Vencimiento</th>
+					<th scope="col">Elaboracion</th>
+					<th scope="col">Congelado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="verdura:${verduras}">
+					<td th:text="${verdura.proveedor}"></td>
+					<td th:text="${verdura.nombre}"></td>
+					<td th:text="${verdura.peso}"></td>
+					<td th:text="${verdura.precio}"></td>
+					<td th:text="${verdura.categoria}"></td>
+					<td th:text="${verdura.fechaVencimiento}"></td>
+					<td th:text="${verdura.fechaElaboracion}"></td>
+					<td th:text="${verdura.congelado} ? SI : NO"></td>
+
+				</tr>
+			</tbody>
+
+		</table>
+
+	</section>
+
+
+</body>
+</html>
