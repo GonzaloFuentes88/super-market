@@ -11,6 +11,8 @@ import jakarta.persistence.TemporalType;
 @MappedSuperclass
 public class Alimento{
 	
+	private String proveedor;
+	
 	private String nombre;
 	
 	@Column(name="fecha_vencimiento")
@@ -26,6 +28,20 @@ public class Alimento{
 	private Double precio;
 	
 	private String categoria;
+
+	
+	
+	
+	public Alimento() {
+	}
+
+	public String getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(String proveedor) {
+		this.proveedor = proveedor;
+	}
 
 	public String getNombre() {
 		return nombre;
