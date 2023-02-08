@@ -22,20 +22,11 @@ public class Carne extends Alimento implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String tipo;
-	
 	private String animal;
 
 	public Carne() {
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 
 	public String getAnimal() {
 		return animal;
