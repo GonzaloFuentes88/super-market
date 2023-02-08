@@ -10,6 +10,10 @@ import com.bolsadeideas.springboot.app.entity.Alimento;
 public interface IServiceAlimento<T extends Alimento> {
 
 	public List<T> findAll();
+	public T findOne(Long id);
 	public List<T> findAllByCategoria(String categoria);
+	
+	public void save(T t);
+	public void delete(Long id);
 	
 }
