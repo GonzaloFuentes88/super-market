@@ -1,5 +1,7 @@
 package com.bolsadeideas.springboot.app.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.bolsadeideas.springboot.app.entity.Carne;
 import com.bolsadeideas.springboot.app.entity.User;
 import com.bolsadeideas.springboot.app.entity.Verdura;
+import com.bolsadeideas.springboot.app.service.IOperaciones;
 import com.bolsadeideas.springboot.app.service.IServiceAlimento;
 import com.bolsadeideas.springboot.app.service.IServiceUser;
 
@@ -35,6 +38,9 @@ public class superMarketController {
 	@Autowired
 	@Qualifier(value = "serviceCarne")
 	IServiceAlimento<Carne> serviceCarne;
+	
+	@Autowired
+	IOperaciones operaciones;
 	
 	@GetMapping({"/login","/"})
 	public String login(Model model) {
@@ -65,6 +71,7 @@ public class superMarketController {
 	@GetMapping("/home")
 	private String home(User user,Model model) {
 		model.addAttribute("titulo",TITULO_PAGE);
+		
 		return "home";
 	}
 	
@@ -78,8 +85,11 @@ public class superMarketController {
 	@GetMapping("/estadisticas")
 	public String estadisticas(Model model) {
 		model.addAttribute("titulo",TITULO_PAGE);
+		model.addAllAttributes(operaciones.obtenerCantidad());
+		
 		return "estadisticas";
 	}
+	
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		model.addAttribute("verduras", serviceVerdura.findAll());
