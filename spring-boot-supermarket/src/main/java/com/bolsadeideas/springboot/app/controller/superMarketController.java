@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -14,6 +15,9 @@ import com.bolsadeideas.springboot.app.entity.User;
 import com.bolsadeideas.springboot.app.entity.Verdura;
 import com.bolsadeideas.springboot.app.service.IServiceAlimento;
 import com.bolsadeideas.springboot.app.service.IServiceUser;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 
 @Controller
 @SessionAttributes("user")
@@ -34,22 +38,28 @@ public class superMarketController {
 	
 	@GetMapping({"/login","/"})
 	public String login(Model model) {
-		model.addAttribute("titulo", TITULO_PAGE);
 		User user = new User();
+		model.addAttribute("titulo", TITULO_PAGE);
+		model.addAttribute("user",user);
 		
 		return "login";
 	}
 	
 	@PostMapping("/login")
-	public String loginRealizado(String username, String password,Model model) {
-		User user = serviceUser.findByUsernameAndPassword(username, password);
-		System.out.println(username+" "+password);
+	public String loginRealizado(@Valid User user,BindingResult result,Model model) {
 		
-		if(user !=null) {
-			return "redirect:/home";
+		if(result.hasFieldErrors("username") || result.hasFieldErrors("password")) {
+			return "login";
+		}else {
+			user = serviceUser.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+			if(user == null) {
+				return "login";
+			}
 		}
-				
-		return "login";
+		
+		model.addAttribute("titulo", TITULO_PAGE);
+		model.addAttribute("user",user);
+		return "redirect:/home";
 	}
 	
 	@GetMapping("/home")
