@@ -4,6 +4,19 @@
 </head>
 <body>
 	<nav th:replace="layout/layout::nav"></nav>
-	
+
+	<section class="section">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="card">
+					<div class="card-body">
+						<div th:replace="highcharts/pieChart::pieChart"></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
 </body>
 </html>
