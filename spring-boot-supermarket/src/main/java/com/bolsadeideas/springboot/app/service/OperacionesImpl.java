@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.app.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,18 @@ public class OperacionesImpl implements IOperaciones{
 		resultados.put("carne", Double.valueOf((totalCarne*100)/total));
 		
 		return resultados;
+	}
+	
+	
+	@Override
+	public List<Integer> obtenerAumentoCarnes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Integer> obtenerAumentoVerduras() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
