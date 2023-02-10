@@ -1,5 +1,7 @@
 package com.bolsadeideas.springboot.app.controller;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +88,10 @@ public class superMarketController {
 	public String estadisticas(Model model) {
 		model.addAttribute("titulo",TITULO_PAGE);
 		model.addAllAttributes(operaciones.obtenerCantidad());
+		List<Integer> aumentoCarne = operaciones.obtenerAumentoCarnes();
+		List<Integer> aumentoVerdura = operaciones.obtenerAumentoVerduras(); 
+		model.addAttribute("aumentoCarne",aumentoCarne);
+		model.addAttribute("aumentoVerdura",aumentoVerdura);
 		
 		return "estadisticas";
 	}
