@@ -19,6 +19,7 @@ import com.bolsadeideas.springboot.app.entity.User;
 import com.bolsadeideas.springboot.app.entity.Verdura;
 import com.bolsadeideas.springboot.app.service.IOperaciones;
 import com.bolsadeideas.springboot.app.service.IServiceAlimento;
+import com.bolsadeideas.springboot.app.service.IServiceAnnualPercentages;
 import com.bolsadeideas.springboot.app.service.IServiceUser;
 
 import jakarta.validation.Valid;
@@ -32,6 +33,9 @@ public class superMarketController {
 	
 	@Autowired
 	private IServiceUser serviceUser;
+	
+	@Autowired
+	private IServiceAnnualPercentages serviceAnnualPercentage;
 	
 	@Autowired
 	@Qualifier(value = "serviceVerdura")
@@ -88,10 +92,8 @@ public class superMarketController {
 	public String estadisticas(Model model) {
 		model.addAttribute("titulo",TITULO_PAGE);
 		model.addAllAttributes(operaciones.obtenerCantidad());
-		List<Integer> aumentoCarne = operaciones.obtenerAumentoCarnes();
-		List<Integer> aumentoVerdura = operaciones.obtenerAumentoVerduras(); 
-		model.addAttribute("aumentoCarne",aumentoCarne);
-		model.addAttribute("aumentoVerdura",aumentoVerdura);
+		model.addAttribute("aumentoCarne",serviceAnnualPercentage.findByYearAndCategoria(2022L,"carne").getMonths());
+		model.addAttribute("aumentoVerdura",serviceAnnualPercentage.findByYearAndCategoria(2022L,"verdura").getMonths());
 		
 		return "estadisticas";
 	}
