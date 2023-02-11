@@ -19,6 +19,10 @@
 				<div class="card">
 					<div class="card-body">
 						<div th:replace="highcharts/basicColumn::basicColumn"></div>
+						<div class="text-center mx-auto">
+							<a class="btn btn-success" th:href="@{/mes/addMes}" role="button">Agregar o Editar Mes</a>
+							<a class="btn btn-danger" href="" role="button">Eliminar Mes</a>
+						</div>
 					</div>
 				</div>
 			</div>
