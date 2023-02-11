@@ -37,12 +37,12 @@ public class OperacionesImpl implements IOperaciones{
 	
 	
 	@Override
-	public List<Integer> obtenerAumentoCarnes() {
+	public Double obtenerAumentoCarnes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public List<Integer> obtenerAumentoVerduras() {
+	public Double obtenerAumentoVerduras() {
 		// TODO Auto-generated method stub
 		return null;
 	}

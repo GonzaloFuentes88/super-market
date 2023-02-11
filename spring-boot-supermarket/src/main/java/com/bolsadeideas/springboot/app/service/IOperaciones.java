@@ -10,7 +10,7 @@ public interface IOperaciones {
 	
 	public Map<String,Double> obtenerCantidad();
 	
-	public List<Integer> obtenerAumentoCarnes();
-	public List<Integer> obtenerAumentoVerduras();
+	public Double obtenerAumentoCarnes();
+	public Double obtenerAumentoVerduras();
 
 }
