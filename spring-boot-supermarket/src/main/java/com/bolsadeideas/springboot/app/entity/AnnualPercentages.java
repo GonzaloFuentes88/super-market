@@ -1,63 +1,87 @@
 package com.bolsadeideas.springboot.app.entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "annua_percentages")
+@Table(name = "annual_percentages")
 public class AnnualPercentages {
 	
 	@Id
-	private Long año;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Getter
+	@Setter
+	private Long id;
 
 	@Getter
 	@Setter
-	private Double ene;
+	private Long year;
+
+	@Getter
+	@Setter
+	private Float ene;
 	
 	@Getter
 	@Setter
-	private Double feb;
+	private Float feb;
 	
 	@Getter
 	@Setter
-	private Double abr;
+	private Float mar;
 	
 	@Getter
 	@Setter
-	private Double may;
+	private Float abr;
 	
 	@Getter
 	@Setter
-	private Double jun;
+	private Float may;
 	
 	@Getter
 	@Setter
-	private Double jul;
+	private Float jun;
 	
 	@Getter
 	@Setter
-	private Double ago;
+	private Float jul;
 	
 	@Getter
 	@Setter
-	private Double sep;
+	private Float ago;
 	
 	@Getter
 	@Setter
-	private Double oct;
+	private Float sep;
 	
 	@Getter
 	@Setter
-	private Double nov;
+	private Float oct;
 	
 	@Getter
 	@Setter
-	private Double dic;
+	private Float nov;
+	
+	@Getter
+	@Setter
+	private Float dic;
+	
+	@Getter
+	@Setter
+	private String categoria;
 	
 	public AnnualPercentages() {
+	}
+	
+	public List<Float> getMonths(){
+		return (List<Float>) Arrays.asList(ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic);
 	}
 	
 	
