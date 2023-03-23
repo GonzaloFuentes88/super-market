@@ -126,14 +126,6 @@ public class superMarketController {
 		return "listar";
 	}
 
-	@GetMapping("/editarMes")
-	public String editarMes() {
-		return "editarMes";
-	}
 
-	@GetMapping("/addMes")
-	public String addMes() {
-		return "addMes";
-	}
 
 }
