@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bolsadeideas.springboot.app.entity.AnnualPercentages;
+import com.bolsadeideas.springboot.app.models.entity.AnnualPercentages;
 
 public interface IAnnualPercentagesDao extends JpaRepository<AnnualPercentages, Long>{
 

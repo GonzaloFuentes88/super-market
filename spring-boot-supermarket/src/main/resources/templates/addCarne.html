@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+
+	<nav th:replace="layout/layout::nav"></nav>
+
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+
+		<!-- Page Heading -->
+		<section class="section my-4">
+			<div
+				class="mx-4 row justify-content-center conteiner-fluid bg-dark text-white rounded">
+				<div class="border-bottom">
+					<h3
+						class="h3 text-center mx-auto my-2 bg-danger text-white rounded"
+						style="width: 300px;">Agregar Carne</h3>
+				</div>
+
+				<div class="row mt-4  table table-lg text-white">
+					<form th:action="@{/carne/addCarne}" th:object="${carne}" method="post">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="proveedor">Proveedor</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="text"
+									th:field="*{proveedor}">
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('proveedor')}"
+									th:errors="*{proveedor}"></label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="nombre">Nombre</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="text" th:field="*{nombre}">
+							</div>
+							<div>
+								<label class="alert alert-danger" th:errors="*{nombre}"></label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="peso">Peso</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="number" th:field="*{peso}">
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}"></label>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="precio">Precio</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="number" th:field="*{precio}">
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="categoria">Categoria</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="text"
+									th:field="*{categoria}">
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('categoria')}"
+									th:errors="*{categoria}"></label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="animal">Animal</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="text" th:field="*{animal}">
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('animal')}" th:errors="*{animal}"></label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="fechaElaboracion">Fecha
+								De Elaboracion</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="date"
+									th:field="*{fechaElaboracion}">
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('fechaElaboracion')}"
+									th:errors="*{fechaElaboracion}"></label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="fechaVencimiento">Fecha
+								De Vencimiento</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="date"
+									th:field="*{fechaVencimiento}">
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('fechaVencimiento')}"
+									th:errors="*{fechaVencimiento}"></label>
+							</div>
+						</div>
+						<div>
+							<div>
+								<input class="btn btn-primary" type="submit" value="Aceptar">
+							</div>
+							<div>
+								<a class="btn btn-primary" th:href="@{/listar}">Volver</a>
+							</div>
+						</div>
+					</form>
+
+
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+<footer th:replace="layout/layout :: footer"></footer>
+</html>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bolsadeideas.springboot.app.dao.IAnnualPercentagesDao;
-import com.bolsadeideas.springboot.app.entity.AnnualPercentages;
+import com.bolsadeideas.springboot.app.models.entity.AnnualPercentages;
 
 
 @Service

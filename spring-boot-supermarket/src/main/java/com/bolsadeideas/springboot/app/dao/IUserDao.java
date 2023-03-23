@@ -2,7 +2,7 @@ package com.bolsadeideas.springboot.app.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bolsadeideas.springboot.app.entity.User;
+import com.bolsadeideas.springboot.app.models.entity.User;
 
 public interface IUserDao extends JpaRepository<User, Long>{
 

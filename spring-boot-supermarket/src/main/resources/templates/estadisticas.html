@@ -7,27 +7,84 @@
 
 	<section class="section">
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-3 my-2 mx-3">
+				<div class="card border-left-primary shadow h-100 py-2 bg-danger">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-white text-uppercase mb-1">
+									STOCK CARNES</div>
+								<div class="h5 mb-0 font-weight-bold text-white"
+									th:text="${cantCarne}"></div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 my-2 mx-3">
+				<div class="card border-left-danger shadow h-100 py-2 bg-success">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-white text-uppercase mb-1">
+									STOCK VERDURAS</div>
+								<div class="h5 mb-0 font-weight-bold text-white"
+									th:text="${cantVerdura}"></div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 my-2 mx-3">
+				<div class="card border-left-primary shadow h-100 py-2 bg-primary">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-white text-uppercase mb-1">
+									STOCK TOTAL</div>
+								<div class="h5 mb-0 font-weight-bold text-white"
+									th:text="${cantAlimento}"></div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 mx-3">
 				<div class="card">
 					<div class="card-body">
 						<div th:replace="highcharts/pieChart::pieChart"></div>
 					</div>
-
 				</div>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<div class="card">
 					<div class="card-body">
 						<div th:replace="highcharts/basicColumn::basicColumn"></div>
-						<div class="text-center mx-auto">
-							<a class="btn btn-success" th:href="@{/mes/addMes}" role="button">Agregar o Editar Mes</a>
-							<a class="btn btn-danger" href="" role="button">Eliminar Mes</a>
+						<div class="row mx-auto">
+							<a class="btn btn-primary my-1" th:href="@{/addMes}">Agregar Mes</a>
+							<a class="btn btn-success" th:href="@{/editarMess}">Editar Mes</a>
 						</div>
 					</div>
 				</div>
 			</div>
 
+
+
 		</div>
 	</section>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

@@ -2,7 +2,7 @@ package com.bolsadeideas.springboot.app.service;
 
 import java.util.List;
 
-import com.bolsadeideas.springboot.app.entity.AnnualPercentages;
+import com.bolsadeideas.springboot.app.models.entity.AnnualPercentages;
 
 public interface IServiceAnnualPercentages {
 	public List<AnnualPercentages> findAll();

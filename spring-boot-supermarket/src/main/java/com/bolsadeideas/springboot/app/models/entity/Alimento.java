@@ -1,38 +1,58 @@
-package com.bolsadeideas.springboot.app.entity;
+package com.bolsadeideas.springboot.app.models.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 
 @MappedSuperclass
 public class Alimento{
 	
+	@NotEmpty
 	private String proveedor;
 	
+	@NotEmpty
 	private String nombre;
 	
+	@NotNull
 	@Column(name="fecha_vencimiento")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fechaVencimiento;
 	
+	@NotNull
 	@Column(name="fecha_elaboracion")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fechaElaboracion;
 	
+	@NotNull
 	private Double peso;
 	
+	@NotNull
 	private Double precio;
 	
+	@NotEmpty
 	private String categoria;
 
 	
 	
 	
 	public Alimento() {
+	}
+	
+	@PrePersist
+	public void prePersist() {
+		fechaElaboracion = new Date();
+		fechaVencimiento = new Date();
 	}
 
 	public String getProveedor() {

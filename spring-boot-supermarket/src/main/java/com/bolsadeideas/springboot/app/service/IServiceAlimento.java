@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.bolsadeideas.springboot.app.entity.Alimento;
+import com.bolsadeideas.springboot.app.models.entity.Alimento;
 
 @Service
 public interface IServiceAlimento<T extends Alimento> {

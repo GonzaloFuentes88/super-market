@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.entity;
+package com.bolsadeideas.springboot.app.models.entity;
 
 import java.io.Serializable;
 
@@ -9,10 +9,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="carnes")
-public class Carne extends Alimento implements Serializable{
+@Table(name="verduras")
+public class Verdura extends Alimento implements Serializable{
+
 	
-	
+
 	/**
 	 * 
 	 */
@@ -22,12 +23,10 @@ public class Carne extends Alimento implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String animal;
-
-	public Carne() {
+	private Boolean congelado;
+	
+	public Verdura() {
 	}
-
-
 	
 	
 	public Long getId() {
@@ -35,21 +34,20 @@ public class Carne extends Alimento implements Serializable{
 	}
 
 
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
 
-
-
-	public String getAnimal() {
-		return animal;
+	public Boolean getCongelado() {
+		return congelado;
 	}
-
-	public void setAnimal(String animal) {
-		this.animal = animal;
-	}
+	public void setCongelado(Boolean congelado) {
+		this.congelado = congelado;
+	} 
+	
+	
+	
+	
 	
 }

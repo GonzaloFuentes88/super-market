@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.entity;
+package com.bolsadeideas.springboot.app.models.entity;
 
 import java.io.Serializable;
 import jakarta.persistence.Entity;

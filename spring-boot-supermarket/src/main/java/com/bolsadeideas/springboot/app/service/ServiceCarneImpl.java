@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bolsadeideas.springboot.app.dao.ICarnesDao;
-import com.bolsadeideas.springboot.app.entity.Carne;
+import com.bolsadeideas.springboot.app.models.entity.Carne;
 
 @Service(value = "serviceCarne")
 public class ServiceCarneImpl implements IServiceAlimento<Carne>{

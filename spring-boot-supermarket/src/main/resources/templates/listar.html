@@ -15,7 +15,7 @@
 					style="width: 300px;">Carnes</h3>
 			</div>
 			<div class="my-1">
-				<a class="btn btn-primary" th:href="@{/add}" role="button">Agregar
+				<a class="btn btn-primary" th:href="@{/carne/addCarne}" role="button">Agregar
 					Carne</a>
 			</div>
 
@@ -25,7 +25,7 @@
 					<tr>
 						<th scope="col">Proveedor</th>
 						<th scope="col">Nombre</th>
-						<th scope="col">Peso</th>
+						<th scope="col">Peso (gramos)</th>
 						<th scope="col">Pecio</th>
 						<th scope="col">Animal</th>
 						<th scope="col">Categoria</th>
@@ -46,9 +46,9 @@
 						<td th:text="${carne.fechaVencimiento}"></td>
 						<td th:text="${carne.fechaElaboracion}"></td>
 						<td><a class="btn btn-danger"
-							th:href="@{/eliminar/} + ${carne.id}" role="button">Eliminar</a></td>
+							th:href="@{/carne/eliminar/} + ${carne.id}" role="button">Eliminar</a></td>
 						<td><a class="btn btn-success"
-							th:href="@{/carne/add/} + ${carne.id}" role="button">Editar</a></td>
+							th:href="@{/carne/addCarne/} + ${carne.id}" role="button">Editar</a></td>
 
 					</tr>
 				</tbody>
@@ -66,7 +66,7 @@
 					style="width: 300px;">Verduras</h3>
 			</div>
 			<div class="my-1">
-				<a class="btn btn-primary" th:href="@{/add}" role="button">Agregar
+				<a class="btn btn-primary" th:href="@{/verdura/addVerdura}" role="button">Agregar
 					Verduras</a>
 			</div>
 			<table class="mt-4 table table-lg text-white"
@@ -75,7 +75,7 @@
 					<tr>
 						<th scope="col">Proveedor</th>
 						<th scope="col">Nombre</th>
-						<th scope="col">Peso</th>
+						<th scope="col">Peso (gramos)</th>
 						<th scope="col">Pecio</th>
 						<th scope="col">Categoria</th>
 						<th scope="col">Vencimiento</th>
@@ -96,9 +96,9 @@
 						<td th:text="${verdura.fechaElaboracion}"></td>
 						<td th:text="${verdura.congelado} ? SI : NO"></td>
 						<td><a class="btn btn-danger"
-							th:href="@{/eliminar/} + ${verdura.id}" role="button">Eliminar</a></td>
+							th:href="@{/verdura/eliminar/} + ${verdura.id}" role="button">Eliminar</a></td>
 						<td><a class="btn btn-success"
-							th:href="@{/verdura/add/} + ${verdura.id}" role="button">Editar</a></td>
+							th:href="@{/verdura/addVerdura/} + ${verdura.id}" role="button">Editar</a></td>
 
 					</tr>
 				</tbody>
@@ -107,6 +107,6 @@
 		</div>
 	</section>
 
-
+<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

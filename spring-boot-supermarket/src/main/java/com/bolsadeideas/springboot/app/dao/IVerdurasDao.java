@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bolsadeideas.springboot.app.entity.Verdura;
+import com.bolsadeideas.springboot.app.models.entity.Verdura;
 
 public interface IVerdurasDao extends JpaRepository<Verdura, Long>{
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bolsadeideas.springboot.app.dao.IUserDao;
-import com.bolsadeideas.springboot.app.entity.User;
+import com.bolsadeideas.springboot.app.models.entity.User;
 
 @Service
 public class ServiceUserImpl implements IServiceUser{
