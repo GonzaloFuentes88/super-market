@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.service;
+package com.bolsadeideas.springboot.app.service.interfaces;
 
 import java.util.List;
 

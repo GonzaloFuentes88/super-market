@@ -1,6 +1,5 @@
-package com.bolsadeideas.springboot.app.service;
+package com.bolsadeideas.springboot.app.service.interfaces;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
