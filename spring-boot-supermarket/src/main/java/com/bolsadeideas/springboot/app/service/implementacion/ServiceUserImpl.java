@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.service;
+package com.bolsadeideas.springboot.app.service.implementacion;
 
 
 import java.util.List;
@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bolsadeideas.springboot.app.dao.IUserDao;
 import com.bolsadeideas.springboot.app.models.entity.User;
+import com.bolsadeideas.springboot.app.service.interfaces.IServiceUser;
 
 @Service
 public class ServiceUserImpl implements IServiceUser{

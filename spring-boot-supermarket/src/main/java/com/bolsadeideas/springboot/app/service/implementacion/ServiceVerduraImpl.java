@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.service;
+package com.bolsadeideas.springboot.app.service.implementacion;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bolsadeideas.springboot.app.dao.IVerdurasDao;
 import com.bolsadeideas.springboot.app.models.entity.Verdura;
+import com.bolsadeideas.springboot.app.service.interfaces.IServiceAlimento;
 
 @Service(value = "serviceVerdura")
 public class ServiceVerduraImpl implements IServiceAlimento<Verdura>{

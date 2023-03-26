@@ -1,7 +1,6 @@
-package com.bolsadeideas.springboot.app.service;
+package com.bolsadeideas.springboot.app.service.implementacion;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.bolsadeideas.springboot.app.models.entity.Carne;
 import com.bolsadeideas.springboot.app.models.entity.Verdura;
+import com.bolsadeideas.springboot.app.service.interfaces.IOperaciones;
+import com.bolsadeideas.springboot.app.service.interfaces.IServiceAlimento;
 
 @Service
 public class OperacionesImpl implements IOperaciones{

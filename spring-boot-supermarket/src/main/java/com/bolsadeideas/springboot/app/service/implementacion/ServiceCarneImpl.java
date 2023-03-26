@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.service;
+package com.bolsadeideas.springboot.app.service.implementacion;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bolsadeideas.springboot.app.dao.ICarnesDao;
 import com.bolsadeideas.springboot.app.models.entity.Carne;
+import com.bolsadeideas.springboot.app.service.interfaces.IServiceAlimento;
 
 @Service(value = "serviceCarne")
 public class ServiceCarneImpl implements IServiceAlimento<Carne>{
