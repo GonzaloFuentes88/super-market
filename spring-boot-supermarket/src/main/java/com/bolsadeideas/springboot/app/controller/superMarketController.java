@@ -16,10 +16,10 @@ import com.bolsadeideas.springboot.app.models.entity.AnnualPercentages;
 import com.bolsadeideas.springboot.app.models.entity.Carne;
 import com.bolsadeideas.springboot.app.models.entity.User;
 import com.bolsadeideas.springboot.app.models.entity.Verdura;
-import com.bolsadeideas.springboot.app.service.IOperaciones;
-import com.bolsadeideas.springboot.app.service.IServiceAlimento;
-import com.bolsadeideas.springboot.app.service.IServiceAnnualPercentages;
-import com.bolsadeideas.springboot.app.service.IServiceUser;
+import com.bolsadeideas.springboot.app.service.interfaces.IOperaciones;
+import com.bolsadeideas.springboot.app.service.interfaces.IServiceAlimento;
+import com.bolsadeideas.springboot.app.service.interfaces.IServiceAnnualPercentages;
+import com.bolsadeideas.springboot.app.service.interfaces.IServiceUser;
 
 import jakarta.validation.Valid;
 
@@ -30,8 +30,27 @@ import jakarta.validation.Valid;
 @SessionAttributes("user")
 public class superMarketController {
 
+	
+	/* COMENTARIO COSAS A AGREGAR
+	 * HACER EL MAPEO DE CATEGORIA, NOMBRE Y VALOR AL OBJETO MES ++
+	 * GUARDAR DICHO OBJETO EN LA DB ++
+	 * QUE SE LISTEN ++
+	 * QUE SE PUEDAN ELIMINAR Y ACTUALIZAR ++
+	 * PASAR DICHOS VALORES AL GRAFICO ++
+	 * VER COMO SE ALMACENAN LOS PAISES EN EL PROYECTO FORM Y REPLICARLO ++
+	 * FINALIZADO ESTO APLICAR VALIDADORES A TODAS LAS CLASES
+	 * AGREGAR MENSAJES FLASH
+	 * INVESTIGAR E IMPLEMENTAR SPRING SECURITY PARA EL LOGIN Y ENCRIPTAR CONTRASEÑAS
+	 * AGREGAR LA OPCION DE RESTAURAR CONTRASEÑA Y LA DE REGISTRAR UN USUARIO
+	 * PARA REGISTRAR UN USUARIO SE NECESITA UN USUARIO ADMINISTRADOR
+	 * */
+	
+	
+	
 	// Titulo de la pagina
 	protected static final String TITULO_PAGE = "SuperMarket";
+	
+	protected static final Long CURRENT_YEAR = Long.valueOf(new GregorianCalendar().get(1));
 
 	// Servicio para manejar los usuarios
 	@Autowired
@@ -77,6 +96,12 @@ public class superMarketController {
 
 		model.addAttribute("titulo", TITULO_PAGE);
 		model.addAttribute("user", user);
+		
+		if(serviceAnnualPercentage.findByYear(CURRENT_YEAR) == null) {
+			AnnualPercentages current = new AnnualPercentages();
+			current.setYear(CURRENT_YEAR);
+			serviceAnnualPercentage.save(current);
+		}
 		return "redirect:/home";
 	}
 
@@ -97,8 +122,7 @@ public class superMarketController {
 	@GetMapping("/estadisticas")
 	public String estadisticas(Model model) {
 		Long year = Long.valueOf(new GregorianCalendar().get(1));
-		AnnualPercentages percentagesCarne = serviceAnnualPercentage.findByYearAndCategoria(year, "carne");
-		AnnualPercentages percentagesVerdura = serviceAnnualPercentage.findByYearAndCategoria(year, "verdura");
+		AnnualPercentages percentages = serviceAnnualPercentage.findByYear(year);
 		Integer cantCarne = serviceCarne.findAll().size();
 		Integer cantVerdura = serviceVerdura.findAll().size();
 		model.addAttribute("titulo", TITULO_PAGE);
@@ -107,11 +131,9 @@ public class superMarketController {
 		model.addAttribute("cantVerdura", cantVerdura);
 		model.addAttribute("cantAlimento", (cantCarne + cantVerdura));
 
-		if (percentagesCarne != null) {
-			model.addAttribute("aumentoCarne", percentagesCarne.getMonths());
-		}
-		if (percentagesVerdura != null) {
-			model.addAttribute("aumentoVerdura", percentagesVerdura.getMonths());
+		if (percentages != null) {
+			model.addAttribute("aumentoCarne", percentages.getMesesCarne());
+			model.addAttribute("aumentoVerdura", percentages.getMesesVerdura());
 		}
 
 		return "estadisticas";

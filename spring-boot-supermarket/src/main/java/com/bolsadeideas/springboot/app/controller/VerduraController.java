@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.bolsadeideas.springboot.app.models.entity.Verdura;
-import com.bolsadeideas.springboot.app.service.IServiceAlimento;
+import com.bolsadeideas.springboot.app.service.interfaces.IServiceAlimento;
 
 import jakarta.validation.Valid;
 
