@@ -1,88 +1,77 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
-import java.util.Arrays;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "annual_percentages")
-public class AnnualPercentages {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter
-	@Setter
-	private Long id;
+public class AnnualPercentages implements Serializable {
 
-	@Getter
-	@Setter
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
 	private Long year;
 
-	@Getter
-	@Setter
-	private Float ene;
-	
-	@Getter
-	@Setter
-	private Float feb;
-	
-	@Getter
-	@Setter
-	private Float mar;
-	
-	@Getter
-	@Setter
-	private Float abr;
-	
-	@Getter
-	@Setter
-	private Float may;
-	
-	@Getter
-	@Setter
-	private Float jun;
-	
-	@Getter
-	@Setter
-	private Float jul;
-	
-	@Getter
-	@Setter
-	private Float ago;
-	
-	@Getter
-	@Setter
-	private Float sep;
-	
-	@Getter
-	@Setter
-	private Float oct;
-	
-	@Getter
-	@Setter
-	private Float nov;
-	
-	@Getter
-	@Setter
-	private Float dic;
-	
-	@Getter
-	@Setter
-	private String categoria;
-	
+	@OneToMany(mappedBy = "annualPercentages", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Mes> meses;
+
 	public AnnualPercentages() {
+		this.meses = new ArrayList<>();
 	}
-	
-	public List<Float> getMonths(){
-		return (List<Float>) Arrays.asList(ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic);
+
+	public boolean addMes(Mes mes) {
+		Mes aux = meses.stream().filter(a -> a.getNombre().equalsIgnoreCase(mes.getNombre())).findFirst().orElse(null);
+
+		if (aux != null) {
+			return false;
+		}
+
+		mes.setAnnualPercentages(this);
+		return meses.add(mes);
 	}
-	
-	
+
+	public boolean deleteMes(Long id) {
+		Mes aux = meses.stream().filter(a -> a.getId().equals(id)).findFirst().orElse(null);
+		
+		return meses.remove(aux); 
+
+	}
+
+	public List<Mes> getMeses() {
+		return meses;
+	}
+
+	public void setMeses(List<Mes> meses) {
+		this.meses = meses;
+	}
+
+	public Long getYear() {
+		return year;
+	}
+
+	public void setYear(Long year) {
+		this.year = year;
+	}
+
+	public List<Float> getMesesCarne() {
+		return this.meses.stream().filter(a -> a.getCategoria().equalsIgnoreCase("carne")).map(a -> a.getValor())
+				.toList();
+	}
+
+	public List<Float> getMesesVerdura() {
+		return this.meses.stream().filter(a -> a.getCategoria().equalsIgnoreCase("verdura")).map(a -> a.getValor())
+				.toList();
+	}
+
 }

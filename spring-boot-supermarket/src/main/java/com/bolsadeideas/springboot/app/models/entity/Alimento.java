@@ -9,8 +9,10 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 
 @MappedSuperclass
@@ -26,12 +28,14 @@ public class Alimento{
 	@Column(name="fecha_vencimiento")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@FutureOrPresent
 	private Date fechaVencimiento;
 	
 	@NotNull
 	@Column(name="fecha_elaboracion")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@PastOrPresent
 	private Date fechaElaboracion;
 	
 	@NotNull
