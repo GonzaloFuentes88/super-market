@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head">
+</head>
+<body>
+
+	<nav th:replace="layout/layout::nav"></nav>
+
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+
+		<!-- Page Heading -->
+		<section class="section my-4">
+			<div
+				class="mx-4 row justify-content-center conteiner-fluid bg-dark text-white rounded">
+				<div class="border-bottom">
+					<h3
+						class="h3 text-center mx-auto my-2 bg-danger text-white rounded"
+						style="width: 300px;">Agregar Mes</h3>
+				</div>
+
+				<div class="row mt-4  table table-lg text-white">
+					<form th:action="@{/mes/addMes}" th:object="${mes}"
+						method="post">
+
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="valor">Valor</label>
+							<div class="col-sm-6">
+								<input class="form-controler" type="number" step="0.1" th:field="*{valor}">
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}"></label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="nombre">Mes</label>
+							<div class="col-sm-6">
+								<select id="mes" th:field="*{nombre}">
+									<option class="form-controler" value="">Seleccionar Mes</option>
+									<option th:each="m:${meses}" th:text="${m}" th:value="${m}"></option>
+								</select>
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></label>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label" for="categoria">Categoria</label>
+							<div class="col-sm-6">
+								<select id="categoria" th:field="*{categoria}">
+									<option class="form-controler" value="">Seleccionar Categoria</option>
+									<option th:each="c:${categorias}" th:text="${c}" th:value="${c}"></option>
+								</select>
+							</div>
+							<div>
+								<label class="alert alert-danger"
+									th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></label>
+							</div>
+						</div>
+						<div>
+							<div>
+								<input class="btn btn-primary" type="submit" value="Aceptar">
+							</div>
+							<div>
+								<a class="btn btn-primary" th:href="@{/mes/listar}">Volver</a>
+							</div>
+						</div>
+					</form>
+
+
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+<footer th:replace="layout/layout :: footer"></footer>
+</html>

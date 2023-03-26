@@ -7,6 +7,10 @@
 	<h2 class="h2 text-center mx-auto my-4 bg-dark text-white rounded"
 		style="width: 300px;">Lista de Mesess</h2>
 	<section class="section">
+	<div class="my-1 mx-auto text-center">
+				<a class="btn btn-primary" th:href="@{/mes/addMes}" role="button">Agregar
+					Mes</a>
+			</div>
 		<div
 			class="mx-4 row justify-content-center conteiner-fluid bg-dark text-white rounded">
 			<div class="border-bottom">
@@ -14,25 +18,24 @@
 					class="h3 text-center mx-auto my-2 bg-danger text-white rounded"
 					style="width: 300px;">Carnes</h3>
 			</div>
-			<div class="my-1">
-				<a class="btn btn-primary" th:href="@{/carne/addCarne}" role="button">Agregar
-					Mes Carne</a>
-			</div>
 
-			<table class="mt-4 table table-lg text-white"
-				th:if="${not listCarne.isEmpty()}">
+			<table class="mt-4 table table-lg text-white" th:object="${mesesList}"
+				th:if="*{meses!=null}">
 				<thead>
-					<tr th:each="carne:${listCarne}">
-						<th th:text="${carne.getName()}"></th>
+					<tr>
+						<th>Categoria</th>
+						<th>Mes</th>
+						<th>Aumento</th>
+						<th>Eliminar</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="carne:${listCarne}">
-						<td th:text="${carne}"></td>
+					<tr th:each="mes:${mesesList}" th:if="${mes.categoria} == 'Carne'">
+						<td th:text="${mes.categoria}"></td>
+						<td th:text="${mes.nombre}"></td>
+						<td th:text="${mes.valor}"></td>
 						<td><a class="btn btn-danger"
-							th:href="@{/carne/eliminar/} + ${carne.id}" role="button">Eliminar</a></td>
-						<td><a class="btn btn-success"
-							th:href="@{/carne/addCarne/} + ${carne.id}" role="button">Editar</a></td>
+							th:href="@{/mes/deleteMes/} + ${mes.id}" role="button">Eliminar</a></td>
 
 					</tr>
 				</tbody>
@@ -49,10 +52,28 @@
 					class="h3 text-center mx-auto my-2 bg-success text-white rounded"
 					style="width: 300px;">Verduras</h3>
 			</div>
-			<div class="my-1">
-				<a class="btn btn-primary" th:href="@{/verdura/addVerdura}" role="button">Agregar
-					Verduras</a>
-			</div>
+						<table class="mt-4 table table-lg text-white" th:object="${mesesList}"
+				th:if="*{meses!=null}">
+				<thead>
+					<tr>
+						<th>Categoria</th>
+						<th>Mes</th>
+						<th>Aumento</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="mes:${mesesList}" th:if="${mes.categoria} == 'Verdura'">
+						<td th:text="${mes.categoria}"></td>
+						<td th:text="${mes.nombre}"></td>
+						<td th:text="${mes.valor}"></td>
+						<td><a class="btn btn-danger"
+							th:href="@{/mes/deleteMes} + ${mes.id}" role="button">Eliminar</a></td>
+
+					</tr>
+				</tbody>
+
+			</table>
 
 		</div>
 	</section>
